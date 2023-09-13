@@ -1,0 +1,55 @@
+!DOCTYPE html>
+<html>
+<head>
+    <title>Pizza Order</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Build Your Pizza</h1>
+
+        <label for="size">Select Pizza Size:</label>
+        <select id="size" onchange="updatePrice()">
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+        </select>
+
+        <h2>Total Price: <span id="totalPrice">$8.99</span></h2>
+
+        <h3>Selected Toppings:</h3>
+        <input type="checkbox" id="pepperoni" onclick="updatePrice()"> Pepperoni<br>
+        <input type="checkbox" id="mushrooms" onclick="updatePrice()"> Mushrooms<br>
+        <input type="checkbox" id="extraCheese" onclick="updatePrice()"> Extra Cheese<br>
+    </div>
+
+    <script>
+        function updatePrice() {
+            var size = document.getElementById("size").value;
+            var totalPrice = 0;
+
+            if (size === "small") {
+                totalPrice += 8.99;
+            } else if (size === "medium") {
+                totalPrice += 10.99;
+            } else if (size === "large") {
+                totalPrice += 12.99;
+            }
+
+            var toppings = document.querySelectorAll('input[type=checkbox]:checked');
+            toppings.forEach(function(topping) {
+                totalPrice += 1.50; // Additional cost for each topping
+            });
+
+            document.getElementById("totalPrice").textContent = "$" + totalPrice.toFixed(2);
+        }
+    </script>
+</body>
+</html>
