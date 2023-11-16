@@ -7,7 +7,7 @@ stages:
   - stage: Build
     displayName: "Build Stage"
     pool:
-      name: Digital-Billboards
+      name: DIGITAL SIGNAGE CONTENT CREATION
 
     jobs:
       - job: BuildJob
@@ -22,7 +22,7 @@ stages:
     displayName: "Dev Stage"
     dependsOn: Build
     pool:
-      name: Digital-Billboards
+      name: DIGITAL SIGNAGE CONTENT CREATION
 
     jobs:
       - job: DevJob
@@ -36,7 +36,7 @@ stages:
     displayName: "PREPROD"
     dependsOn: dev
     pool:
-      name: Digital-Billboards
+      name: DIGITAL SIGNAGE CONTENT CREATION
 
       environment: Prepod
     jobs:
@@ -55,7 +55,7 @@ stages:
     displayName: "PROD Release"
     dependsOn: PREPROD
     pool:
-      name: Digital-Billboards
+      name: DIGITAL SIGNAGE CONTENT CREATION
 
       environment: prod
     jobs:
